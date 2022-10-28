@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> 
+	<link th:href="@{/styles/main.css}"  rel="stylesheet" type="text/css" media="all"  /> 
+	<title>
+		CRUD System
+	</title>
+</head>
+<body>
+
+<div class="topnav">
+  <a th:href="@{/}" class="logo">HelpDeskSystem</a>
+  <a th:href="@{/users}">Users</a>
+  <a th:href="@{/printers}">Printers</a>
+  <a th:href="@{/changePass}">Change Password</a>
+	
+ <div class="search-container">
+    <form th:action="@{/search}">
+      <input type="text" placeholder="Search.." name="name">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+
+  <form th:action="@{/logout}" method="POST">
+  		<button type="submit" class="split" value="Logout">Logout</button>
+  </form>
+</div>
+
+<div style="padding-left:16px">
+  <h2>Split Navigation Example</h2>
+  <p>Sumbit you Ticket</p>
+</div>
+
+
+</body>
+</html>

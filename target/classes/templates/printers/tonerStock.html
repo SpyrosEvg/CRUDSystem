@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> 
+	<link th:href="@{/styles/main.css}"  rel="stylesheet" type="text/css" media="all"  /> 
+	<title> Toner Stock </title>
+</head>
+<body>
+
+<div class="topnav">
+  <a th:href="@{/}" class="logo">HelpDeskSystem</a>
+  <a th:href="@{/users}">Users</a>
+  <a th:href="@{/printers}">Printers</a>
+  <a th:href="@{/changePass}">Change Password</a>
+	
+ <div class="search-container">
+    <form th:action="@{/search}">
+      <input type="text" placeholder="Search.." name="name">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+
+  <form th:action="@{/logout}" method="POST">
+  		<button type="submit" class="split" value="Logout">Logout</button>
+  </form>
+</div>
+	<div class="container">
+
+	<br>
+	
+	<a th:href="@{/printers}" class="previous round">&#8249;&#8249;</a>
+		
+	<br><br>
+	
+	<form action="/addTonerForm" sec:authorize="hasRole('ADMIN')">
+	  <label for="name">Choose a Color Toner to add:</label>
+	  <select class="form-select" name="name" id="name">
+	    <option value="Black">Black Toner</option>
+	    <option value="Magenta">Magenta Toner</option>
+	    <option value="Cyan">Cyan Toner</option>
+	    <option value="Yellow">Yellow Toner</option>
+	  </select>
+	  <br>
+	  <input class="btn btn-dark" type="submit" value="Add Toner">
+	</form>
+	
+    <br> <br>
+
+    
+	<table class="table table-bordered table-striped">
+		<thead class="table-dark">
+			<tr>
+				<th>Toner Name</th>
+				<th>Color</th>
+				<th>Stock</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<!-- Black Toner -->
+		<tbody>
+			<tr th:each="tempKToner :${blackToner}">
+				<td th:text ="${tempKToner.name}" />
+				<td th:text ="${tempKToner.color}"/>
+				<td th:text ="${tempKToner.stock}" />				
+				<td>
+				
+					<a th:href="@{/addKQuantity(name=${tempKToner.name})}"
+						class="btn btn-outline-secondary btn-sm" >
+						<strong>+</strong>
+					</a>	
+				
+					<a th:href="@{/removeKQuantity(name=${tempKToner.name})}"
+						class="btn btn-outline-warning btn-sm"  >
+						<strong>-</strong>
+					</a>
+					
+					<a th:href="@{/deleteKtoner(name=${tempKToner.name})}"
+						class="btn btn-outline-danger btn-sm" 
+						sec:authorize="hasRole('ADMIN')">
+						Delete
+					</a>
+					
+					<a th:href="@{/updateKtonerForm(name=${tempKToner.name})}"
+						class="btn btn-outline-secondary btn-sm"  >
+						Update
+					</a>
+				</td>
+				
+			</tr>
+		</tbody>
+		<!-- Magenta Toner -->
+		<tbody>
+			<tr th:each="tempMToner :${magentaToner}">
+				<td th:text ="${tempMToner.name}" />
+				<td th:text ="${tempMToner.color}"/>
+				<td th:text ="${tempMToner.stock}" />				
+				<td>
+				
+					<a th:href="@{/addMQuantity(name=${tempMToner.name})}"
+						class="btn btn-outline-secondary btn-sm"  >
+						<strong>+</strong>
+					</a>	
+				
+					<a th:href="@{/removeMQuantity(name=${tempMToner.name})}"
+						class="btn btn-outline-warning btn-sm"  >
+						<strong>-</strong>
+					</a>
+					
+					<a th:href="@{/deleteMtoner(name=${tempMToner.name})}"
+						class="btn btn-outline-danger btn-sm" 
+						sec:authorize="hasRole('ADMIN')">
+						Delete
+					</a>
+					
+					<a th:href="@{/updateMtonerForm(name=${tempMToner.name})}"
+						class="btn btn-outline-secondary btn-sm"  >
+						Update
+					</a>
+					
+				</td>
+				
+			</tr>
+		</tbody>
+		<!-- Cyan Toner -->
+		<tbody>
+			<tr th:each="tempCToner :${cyanToner}">
+				<td th:text ="${tempCToner.name}" />
+				<td th:text ="${tempCToner.color}"/>
+				<td th:text ="${tempCToner.stock}" />				
+				<td>
+				<a th:href="@{/addCQuantity(name=${tempCToner.name})}"
+						class="btn btn-outline-secondary btn-sm"  >
+						<strong>+</strong>
+					</a>	
+				
+					<a th:href="@{/removeCQuantity(name=${tempCToner.name})}"
+						class="btn btn-outline-warning btn-sm"  >
+						<strong>-</strong>
+					</a>
+					
+					<a th:href="@{/deleteCtoner(name=${tempCToner.name})}"
+						class="btn btn-outline-danger btn-sm" 
+						sec:authorize="hasRole('ADMIN')">
+						Delete
+					</a>
+					
+					<a th:href="@{/updateCtonerForm(name=${tempCToner.name})}"
+						class="btn btn-outline-secondary btn-sm"  >
+						Update
+					</a>
+					
+				</td>
+				
+			</tr>
+		</tbody>
+		<!-- Tellow Toner -->
+		<tbody>
+			<tr th:each="tempYToner :${yellowToner}">
+				<td th:text ="${tempYToner.name}" />
+				<td th:text ="${tempYToner.color}"/>
+				<td th:text ="${tempYToner.stock}" />				
+				<td>
+				<a th:href="@{/addYQuantity(name=${tempYToner.name})}"
+						class="btn btn-outline-secondary btn-sm"  >
+						<strong>+</strong>
+					</a>	
+				
+					<a th:href="@{/removeYQuantity(name=${tempYToner.name})}"
+						class="btn btn-outline-warning btn-sm"  >
+						<strong>-</strong>
+					</a>
+					
+					<a th:href="@{/deleteYtoner(name=${tempYToner.name})}"
+						class="btn btn-outline-danger btn-sm"
+						sec:authorize="hasRole('ADMIN')" >
+						Delete
+					</a>
+					
+					<a th:href="@{/updateYtonerForm(name=${tempYToner.name})}"
+						class="btn btn-outline-secondary btn-sm"  >
+						Update
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+</body>
+</html>
