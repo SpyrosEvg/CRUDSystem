@@ -3,11 +3,12 @@
 				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> 
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> 
 	<link th:href="@{/styles/main.css}"  rel="stylesheet" type="text/css" media="all"  /> 
-	<title> Update Black Toner </title>
+	<title>
+		CRUD System
+	</title>
 </head>
 <body>
 
@@ -16,6 +17,7 @@
   <a th:href="@{/users}">Users</a>
   <a th:href="@{/printers}">Printers</a>
   <a th:href="@{/changePass}">Change Password</a>
+
 	
  <div sec:authorize="hasAnyRole('ADMIN','MANAGER')" class="search-container">
     <form th:action="@{/searchAll}">
@@ -36,34 +38,9 @@
   </form>
 </div>
 
-	<div class="container">
+<h1>Erro 404 : Not Found</h1>
 
-		<br>
-		
-		<a th:href="@{/callMe}" class="previous round">&#8249;&#8249;</a>
-		
-		<br><br>
-		
-		<p class ="h4 mb-4"> Update Black Toner </p>
-		
-		<form action="#" th:action="@{/updateKtoner}"
-						 th:object="${blackToner}" method="POST">
-						 
-					
-				<input type="text" th:field="*{name}" id="name"
-						class="form-control mb-4 col-4" placeholder="Toner name">		 
-				<p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}" />
-				
-						
-				<input type="hidden" name="color" th:value="Black">	
-				
-				<input type="hidden" name="stock" th:value="*{stock}">	 
-				
-				<br>
-				<button type="submit" class="btn btn-dark col-2">Save</button>
-								
-		</form>
-	</div>
+<h3>Sorry item not found</h3>
 
 
 </body>

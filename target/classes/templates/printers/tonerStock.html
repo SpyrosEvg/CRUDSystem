@@ -17,8 +17,15 @@
   <a th:href="@{/printers}">Printers</a>
   <a th:href="@{/changePass}">Change Password</a>
 	
- <div class="search-container">
+<div sec:authorize="hasAnyRole('ADMIN','MANAGER')" class="search-container">
     <form th:action="@{/search}">
+      <input type="text" placeholder="Search.." name="name">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  
+  <div sec:authorize="hasRole('EMPLOYEE')" class="search-container">
+    <form th:action="@{/searchAll}">
       <input type="text" placeholder="Search.." name="name">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>

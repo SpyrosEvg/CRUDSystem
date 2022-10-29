@@ -17,8 +17,16 @@
   <a th:href="@{/users}">Users</a>
   <a th:href="@{/printers}">Printers</a>
   <a th:href="@{/changePass}">Change Password</a>
+
 	
- <div class="search-container">
+ <div sec:authorize="hasAnyRole('ADMIN','MANAGER')" class="search-container">
+    <form th:action="@{/searchAll}">
+      <input type="text" placeholder="Search.." name="name">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  
+  <div sec:authorize="hasRole('EMPLOYEE')" class="search-container">
     <form th:action="@{/search}">
       <input type="text" placeholder="Search.." name="name">
       <button type="submit"><i class="fa fa-search"></i></button>
@@ -30,10 +38,22 @@
   </form>
 </div>
 
-<div style="padding-left:16px">
-  <h2>Split Navigation Example</h2>
-  <p>Sumbit you Ticket</p>
-</div>
+<div class="container">
+  <h2>User Guide</h2>
+	<ul>
+		<li><h4>Employees</h4>
+		<p>Employees can only see the Users and printers table,
+			 also they can change their password </p>
+		<li><h4>Managers</h4>
+		<p>Managers can see the Users table, Update them and change their Role,
+			also they can change their password.
+			Furthermore they can see the Printers table,Update it and see their stocks.
+			Finally in stock they can add or remove a toner quantity and update the name</p>
+		<li><h4>Administrators</h4>
+		<p>Admins can do all the thing Managers can do including other actions .\
+		Some of them are add or deleting User,Printer and toner</p>
+	</ul>	  
+	  
 
 
 </body>

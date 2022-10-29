@@ -56,8 +56,8 @@ public class UserController {
 	}
 	
 	//Searching in the database
-	@GetMapping("/search")
-	public String search(@RequestParam("name") String theName,
+	@GetMapping("/searchAll")
+	public String searchAll(@RequestParam("name") String theName,
 						 Model theModel) {
 		
 		String result="/users/Users";
@@ -109,9 +109,45 @@ public class UserController {
 			
 			result = "/printers/tonerStock";
 		}
+		else {
+			result="/notFound";
+		}
 		
 		return result;
 	}
+	
+	//Searching in the database
+		@GetMapping("/search")
+		public String search(@RequestParam("name") String theName,
+							 Model theModel) {
+			
+			String result="/users/Users";
+			
+			// search all List 
+			List<Users> theUsers = ticketService.searchBy(theName);
+			List<Printers> thePrinter = ticketService.searchPrinters(theName);
+
+			
+			//if nothing is found
+			if(!theUsers.isEmpty()) {
+				// add to the spring model
+				theModel.addAttribute("users", theUsers);
+				
+				// send to /employees/list
+				result = "/users/Users";
+			}
+			else if(!thePrinter.isEmpty()) {
+				
+				theModel.addAttribute("printers", thePrinter);
+				
+				result = "/printers/Printers";
+			}
+			else {
+				result="/notFound";
+			}
+			
+			return result;
+		}
 	
 	//Convert a String into BCrtypt
 	public String passwordEncoder(String pass) {
