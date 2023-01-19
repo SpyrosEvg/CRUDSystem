@@ -114,10 +114,10 @@ VALUES
 ('ROLE_EMPLOYEE'),('ROLE_MANAGER'),('ROLE_ADMIN');
 
 INSERT INTO `users` VALUES 
-	('jdoe','$2y$10$KsdSK1SkKu036eFPoxahBOKOHXQmPrCspdC1egTBmrWeUUL4k6DF6',1,'John','Doe','jdeo@mod.com','Pc-001','Male','105'),
-    ('rsnow','$2y$10$KsdSK1SkKu036eFPoxahBOKOHXQmPrCspdC1egTBmrWeUUL4k6DF6',1,'Ron','Snow','rshow@mod.com','Pc-002','Male','270'),
-    ('jadoe','$2y$10$KsdSK1SkKu036eFPoxahBOKOHXQmPrCspdC1egTBmrWeUUL4k6DF6',1,'Jane','Doe','jadoe@mod.com','Pc-003','Female','650'),
-    ('lsand','$2y$10$KsdSK1SkKu036eFPoxahBOKOHXQmPrCspdC1egTBmrWeUUL4k6DF6',1,'Luisa','Sand','lsand@mod.com','Pc-004','Male','422');
+    ('jdoe','$2y$10$KsdSK1SkKu036eFPoxahBOKOHXQmPrCspdC1egTBmrWeUUL4k6DF6',1,'John','Doe','jdeo@email.com','Pc-001','Male','105'),
+    ('rsnow','$2y$10$KsdSK1SkKu036eFPoxahBOKOHXQmPrCspdC1egTBmrWeUUL4k6DF6',1,'Ron','Snow','rshow@email.com','Pc-002','Male','270'),
+    ('jadoe','$2y$10$KsdSK1SkKu036eFPoxahBOKOHXQmPrCspdC1egTBmrWeUUL4k6DF6',1,'Jane','Doe','jadoe@email.com','Pc-003','Female','650'),
+    ('lsand','$2y$10$KsdSK1SkKu036eFPoxahBOKOHXQmPrCspdC1egTBmrWeUUL4k6DF6',1,'Luisa','Sand','lsand@email.com','Pc-004','Male','422');
     
 INSERT INTO `authorities` 
 VALUES 
