@@ -27,9 +27,6 @@ In order to see the project in action , First of all  , change the Prespective t
 <Br>File->Import->Under Maven : Existing Maven Project -> Next -> <br>
 Browse your computer to find the location of the unzipped project and hit Finish
 
-<br> Also , you will need to install tomcat 9 , then you need to go in 
-<br>File -> New -> Server or Other -> Under Server section choose Server -> Next -> Under Apache go to Tomcat 9.0 -> hit Next -> browse the location that you have installed Tomcat -> Finish
-
 <br> Finally, you will need MySql , after the installation is complete log in as root and run the create_user.sql then log in as the user and as shown run the CRUDSystem.sql file.
 
 <h3>How to run the project</h3>
