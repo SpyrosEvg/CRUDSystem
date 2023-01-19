@@ -4,7 +4,7 @@ This project is a Spring Boot CRUD system
 <h2>Introduction</h2>
 
  - </h3>Overview of the project</h3>
- This project functions as a Database , it has 3 tables User,Printers,Toner. CRUDSystem is a system to keep track of users , printers and toners.
+ This project functions as a Database , it has 3 tables User,Printers,Toner(see CRUDSystem.png for the database schema). CRUDSystem is a system to keep track of users , printers and toners.
  
  - <h3>Technologies Used :</h3>
     <ul>
