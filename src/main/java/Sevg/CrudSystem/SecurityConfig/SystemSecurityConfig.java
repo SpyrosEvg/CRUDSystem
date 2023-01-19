@@ -43,6 +43,7 @@ public class SystemSecurityConfig {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
+			.antMatchers("/").hasAnyRole("ADMIN","MANAGER","EMPLOYEE")
 			.antMatchers("/searchAll").hasAnyRole("ADMIN","MANAGER")
 			.antMatchers("/search").hasAnyRole("EMPLOYEE")
 			.antMatchers("/AddUserForm").hasAnyRole("ADMIN")
